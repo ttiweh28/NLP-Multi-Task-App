@@ -2,6 +2,8 @@ import streamlit as st
 from src.text_summarizer import summarize_text, get_summarization_model_names
 from src.text_generator import generate_text, get_generation_model_names
 from src.translator import translate_text, get_language_options
+from src.utils import download_button
+
 
 
 st.set_page_config(
@@ -14,8 +16,6 @@ st.set_page_config(
 with st.sidebar:
     st.markdown("## NLP Mini Multi-Task App")
     st.markdown("This is a mini demo app using Hugging Face transformers.")
-
-    # st.image("assets/logo.png", use_container_width=True)
 
     st.markdown("---")
     task = st.selectbox(
@@ -74,6 +74,9 @@ if task == "📝 Summarization":
                 summary = summarize_text(text,model_choice, max_length=max_len, min_length=min_len)
             st.subheader("Summary")
             st.write(summary)
+            if st.button("Download Summary"):
+                download_button("Download Summary", summary, "summary.txt")
+
 
     st.markdown("---")
     st.caption(
@@ -114,6 +117,13 @@ elif task == "✍️ Text Generation":
             st.subheader("Generated Text")
             st.write(output)
 
+            if st.button("Download Generated Text"):
+                download_button(
+                    label="Download Generated Text",
+                    text=output,
+                    filename="generated_text.txt"
+                )
+
     st.markdown("---")
     st.caption("Please be aware of load times. Also always review outputs.")
 
@@ -149,6 +159,9 @@ elif task == "🌐 Translation":
                 translated = translate_text(text_to_translate, lang_pair=selected_code)
             st.subheader("Translated Output")
             st.write(translated)
+            if st.button("Download Translation"):
+                download_button("Download Translation", translated, "translation.txt")
+
 
     st.markdown("---")
     st.caption(
