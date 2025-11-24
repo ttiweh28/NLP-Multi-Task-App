@@ -38,7 +38,7 @@ st.markdown(
 )
 st.markdown("---")
 
-# ====== TASK: SUMMARIZATION ======
+
 if task == "📝 Summarization":
     st.header("📝 Text Summarization")
 
@@ -75,7 +75,7 @@ if task == "📝 Summarization":
         "This uses `facebook/bart-large-cnn` from Hugging Face's transformers library."
     )
 
-# ====== TASK: TEXT GENERATION ======
+
 elif task == "✍️ Text Generation":
     st.header("✍️ Creative Text Generation")
 
@@ -106,7 +106,7 @@ elif task == "✍️ Text Generation":
     st.markdown("---")
     st.caption("This uses `gpt2` for open-ended text generation. Always review outputs.")
 
-# ====== TASK: TRANSLATION ======
+
 elif task == "🌐 Translation":
     st.header("🌐 Machine Translation")
 
