@@ -13,7 +13,7 @@ st.set_page_config(
 
 with st.sidebar:
     st.markdown("## NLP Mini Multi-Task App")
-    st.markdown("Mini demo app using Hugging Face transformers.")
+    st.markdown("This is a mini demo app using Hugging Face transformers.")
 
     # st.image("assets/logo.png", use_container_width=True)
 
@@ -71,7 +71,7 @@ if task == "📝 Summarization":
             st.warning("Please enter text to summarize.")
         else:
             with st.spinner("Generating summary..."):
-                summary = summarize_text(text, max_length=max_len, min_length=min_len)
+                summary = summarize_text(text,model_choice, max_length=max_len, min_length=min_len)
             st.subheader("Summary")
             st.write(summary)
 
@@ -110,12 +110,12 @@ elif task == "✍️ Text Generation":
             st.warning("Please enter a prompt")
         else:
             with st.spinner("Generating text..."):
-                output = generate_text(prompt, max_new_tokens=max_new_tokens)
+                output = generate_text(prompt,gen_model_choice, max_new_tokens=max_new_tokens)
             st.subheader("Generated Text")
             st.write(output)
 
     st.markdown("---")
-    st.caption("LLMs please be awaare of load times. Always review outputs.")
+    st.caption("Please be aware of load times. Also always review outputs.")
 
 
 elif task == "🌐 Translation":
